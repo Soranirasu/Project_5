@@ -23,6 +23,8 @@ let slidesNumb = slides.length;
 
 let arrowR = document.querySelector('.arrow_right');
 let arrowL = document.querySelector('.arrow_left');
+console.log(arrowR)
+let image = document.querySelector('.banner-img')
 
 arrowL.addEventListener('click', function(){
 	if (position == 0) {
@@ -31,6 +33,9 @@ arrowL.addEventListener('click', function(){
 	else {
 		position--;
 	}
+	console.log(slides[position].tagLine)
+	let newSrc = "./assets/images/slideshow/" + slides[position].image
+	image.setAttribute("src", newSrc)
 })
 
 arrowR.addEventListener('click', function(){
@@ -40,6 +45,5 @@ arrowR.addEventListener('click', function(){
 	else {
 		position++;
 	}
+	console.log(position)
 })
-
-console.log()
