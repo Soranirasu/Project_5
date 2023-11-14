@@ -20,14 +20,14 @@ const slides = [
 let position = 0;
 let slidesNumb = slides.length;
 
-
 let arrowR = document.querySelector('.arrow_right');
 let arrowL = document.querySelector('.arrow_left');
-console.log(arrowR)
+
 let image = document.querySelector('.banner-img')
 
 let txt = document.querySelector('.banner-txt')
-let dotNumber = document.querySelector('.dots')
+
+console.log(arrowR)
 
 arrowL.addEventListener('click', function () {
 	if (position == 0) {
@@ -43,6 +43,7 @@ arrowL.addEventListener('click', function () {
 	txt.innerHTML = newTxt.tagLine;
 
 	console.log(slides[position].tagLine);
+	majDot();
 })
 
 arrowR.addEventListener('click', function () {
@@ -57,6 +58,37 @@ arrowR.addEventListener('click', function () {
 
 	let newTxt = slides[position];
 	txt.innerHTML = newTxt.tagLine;
-	
+
 	console.log(slides[position].tagLine);
+	majDot();
 })
+
+
+
+function createDots() {
+	let bulletPoints = document.querySelector('.dots')
+	//créer un dot pour chaque slide du tableau
+	for (let i = 0; i < slides.length; i++) {
+		let newPoint = document.createElement("div");
+		newPoint.setAttribute("class", "dot")
+		bulletPoints.appendChild(newPoint);
+	}
+}
+
+createDots();
+
+function majDot() {
+	let points = document.querySelectorAll(".dot");
+	for (let i = 0; i < points.length; i++) {
+
+		let dot = points[i];
+		if (i == position) {
+			dot.classList.add('dot_selected');
+		}
+		else {
+			dot.classList.remove('dot_selected');
+		}
+	}
+}
+
+majDot();
